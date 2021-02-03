@@ -43,11 +43,12 @@ public class TodoItemViewModel extends ViewModel implements LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause() {
-        TodoListItemViewModel vm = model.get();
-        if (vm != null) {
-            TodoListItem item = mapToDomain(vm);
-
-            updateItemUseCase.updateItem(item);
+        if(model!=null){
+            TodoListItemViewModel vm = model.get();
+            if (vm != null) {
+                TodoListItem item = mapToDomain(vm);
+                updateItemUseCase.updateItem(item);
+            }
         }
     }
 

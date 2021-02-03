@@ -92,7 +92,6 @@ public class TodoItemActivity extends AppCompatActivity {
         TodoListItemViewModel viewModel = this.viewModel.model.get();
         if (viewModel != null && doneItem != null && undoneItem != null) {
             boolean isDone = viewModel.isChecked.get();
-
             doneItem.setVisible(!isDone);
             undoneItem.setVisible(isDone);
         }
