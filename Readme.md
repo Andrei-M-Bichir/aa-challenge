@@ -2,10 +2,12 @@
 - Fix all crashes
 - Make sure master-detail navigation is working
 - List screen should display all items
+- 'Checked' items should not auto-reset when navigating
+- Make sure 'Clear all' is clearing all selected items
 - Romanian & English supported
 - Night mode supported
 - Detail Screen > Alarm button (top bar) > Show a notification after 10 seconds: "Notification from alarm button"
-- Show a notification everytime the list of items was change: "Something was changed"
+- Show a notification every time the list of items was changed: "Something was changed"
 - List screen > Menu Add button > Takes user to details screen
 - InMemoryDataSource should have at least 3 unit tests in the test package
 - Make sure `DiskDataSource` is also storing/updating data
