@@ -54,12 +54,20 @@ public class TodoListViewModel extends ViewModel implements TodoListItemTapListe
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause() {
-        List<TodoListItemViewModel> listItemViewModels = items.getValue();
-        if (listItemViewModels != null) {
-            for (TodoListItemViewModel model : listItemViewModels) {
-                updateItemDoneStateUseCase.execute(model.id, model.isChecked.get());
+        if(items!=null){
+            List<TodoListItemViewModel> listItemViewModels = items.getValue();
+            if (listItemViewModels != null) {
+                for (TodoListItemViewModel model : listItemViewModels) {
+                    updateItemDoneStateUseCase.execute(model.id, model.isChecked.get());
+                }
             }
         }
+//        List<TodoListItemViewModel> listItemViewModels = items.getValue();
+//        if (listItemViewModels != null) {
+//            for (TodoListItemViewModel model : listItemViewModels) {
+//                updateItemDoneStateUseCase.execute(model.id, model.isChecked.get());
+//            }
+//        }
     }
 
     @Override
