@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/add_alarm"
+        android:icon="@drawable/round_add_alert_24"
+        android:title="Add reminder"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/round_delete_24"
+        android:title="Remove"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/mark_undone"
+        android:icon="@drawable/round_check_circle_outline_24"
+        android:title="Mark as not Done"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/mark_done"
+        android:icon="@drawable/round_check_circle_24"
+        android:title="Mark as Done"
+        app:showAsAction="ifRoom" />
+</menu>

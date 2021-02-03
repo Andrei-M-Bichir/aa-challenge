@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="ro.scoala.mytodolist.presentation.list.TodoListItemViewModel" />
+
+        <variable
+            name="listener"
+            type="ro.scoala.mytodolist.presentation.list.TodoListItemTapListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="?attr/selectableItemBackground">
+
+        <CheckBox
+            android:id="@+id/done_checkBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox_selector"
+            android:checked="@={model.isChecked}"
+            android:onClick="@{(view) -> listener.onItemTap(model)}"
+            android:padding="5dp"
+            android:text="@{model.name}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:checked="true"
+            tools:text="This is my item" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/done_checkBox" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
