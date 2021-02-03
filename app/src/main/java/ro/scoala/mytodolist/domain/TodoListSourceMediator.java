@@ -18,7 +18,7 @@ public class TodoListSourceMediator {
     private final MutableLiveData<List<TodoListItem>> items;
     private final ExecutorService executorService;
 
-    public TodoListSourceMediator(TodoListRepository localRepository) {
+    public TodoListSourceMediator(TodoListRepository localRepository, TodoListRepository diskRepository) {
         this.localRepository = localRepository;
         this.diskRepository = diskRepository;
         this.executorService = Executors.newSingleThreadExecutor();

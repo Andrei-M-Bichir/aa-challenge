@@ -15,6 +15,7 @@ import ro.scoala.mytodolist.R;
 import ro.scoala.mytodolist.databinding.ListItemBinding;
 
 public class TodoListItemsAdapter extends Adapter<TodoListItemsAdapter.TodoListItemViewHolder> {
+
     private final List<TodoListItemViewModel> items;
     private TodoListItemTapListener listItemTapListener;
 

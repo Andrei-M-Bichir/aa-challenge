@@ -21,6 +21,7 @@ import ro.scoala.mytodolist.domain.TodoListItem;
 import ro.scoala.mytodolist.domain.UpdateItemDoneStateUseCase;
 
 public class TodoListViewModel extends ViewModel implements TodoListItemTapListener, LifecycleObserver {
+
     private final LoadItemsUseCase loadItemsUseCase;
     private final AddItemUseCase addItemUseCase;
     private final RemoveItemUseCase removeItemUseCase;
