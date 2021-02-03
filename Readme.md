@@ -1,5 +1,5 @@
-- Make sure the code compiles - Catalin
-- Fix all crashes - - Catalin
+- Make sure the code compiles - Catalin done
+- Fix all crashes - - Catalin done
 - Make sure master-detail navigation is working - Catalin
 
 - List screen should display all items
