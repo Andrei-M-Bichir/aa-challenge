@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ro.scoala.mytodolist.R;
 import ro.scoala.mytodolist.data.sync.TodoListSyncConnection;
@@ -62,6 +66,16 @@ public class TodoListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.advanced_add) {
+
+            if(viewModel.getItems() != null) {
+                List<TodoListItemViewModel> itemLIst = viewModel.getItems().getValue();
+                int nextID = itemLIst.size() + 1;
+                Intent intent = new Intent(this, TodoItemActivity.class);
+                intent.putExtra(TodoItemActivity.ITEM_ID_TAG, nextID);
+                startActivity(intent);
+            }else {
+                Toast.makeText(this, "Please select an item", Toast.LENGTH_SHORT).show();
+            }
             return true;
         } else if (itemId == R.id.clear_all) {
             viewModel.onClearAllCheckedTapped();
