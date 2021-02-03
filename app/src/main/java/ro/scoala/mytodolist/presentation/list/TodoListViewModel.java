@@ -76,14 +76,22 @@ public class TodoListViewModel extends ViewModel implements TodoListItemTapListe
     }
 
     public void onClearAllCheckedTapped() {
-        List<TodoListItemViewModel> value = items.getValue();
-        if (value != null) {
+        List<TodoListItemViewModel> value;
+        if (items!=null) {
+            value = items.getValue();
             for (TodoListItemViewModel item : value) {
                 if (item.isChecked.get()) {
                     removeItemUseCase.removeItemById(item.id);
                 }
             }
         }
+//        if (value != null) {
+//            for (TodoListItemViewModel item : value) {
+//                if (item.isChecked.get()) {
+//                    removeItemUseCase.removeItemById(item.id);
+//                }
+//            }
+//        }
     }
 
     public LiveData<List<TodoListItemViewModel>> getItems() {
