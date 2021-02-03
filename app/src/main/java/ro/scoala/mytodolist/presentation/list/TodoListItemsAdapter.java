@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
@@ -15,7 +16,7 @@ import ro.scoala.mytodolist.R;
 import ro.scoala.mytodolist.databinding.ListItemBinding;
 
 public class TodoListItemsAdapter extends Adapter<TodoListItemsAdapter.TodoListItemViewHolder> {
-    private final List<TodoListItemViewModel> items;
+    private List<TodoListItemViewModel> items;
     private TodoListItemTapListener listItemTapListener;
 
     public TodoListItemsAdapter() {
@@ -43,9 +44,11 @@ public class TodoListItemsAdapter extends Adapter<TodoListItemsAdapter.TodoListI
     }
 
     public void updateItems(List<TodoListItemViewModel> items, TodoListItemTapListener listItemTapListener) {
+        this.items = items;
         this.listItemTapListener = listItemTapListener;
         this.items.clear();
         this.items.addAll(items);
+        notifyDataSetChanged();
     }
 
     static class TodoListItemViewHolder extends RecyclerView.ViewHolder {

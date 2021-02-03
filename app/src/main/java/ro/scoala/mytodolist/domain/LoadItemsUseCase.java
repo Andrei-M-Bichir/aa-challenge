@@ -13,6 +13,7 @@ public class LoadItemsUseCase {
     }
 
     public LiveData<List<TodoListItem>> getItems() {
-        return new MutableLiveData<>();
+        return mediator.getItems();
+//        return new MutableLiveData<>();
     }
 }

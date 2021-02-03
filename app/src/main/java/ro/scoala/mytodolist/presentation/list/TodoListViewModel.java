@@ -39,6 +39,7 @@ public class TodoListViewModel extends ViewModel implements TodoListItemTapListe
         this.updateItemDoneStateUseCase = updateItemDoneStateUseCase;
     }
 
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     public void onCreated() {
         items = Transformations.map(loadItemsUseCase.getItems(), input -> {
             List<TodoListItemViewModel> data = new ArrayList<>();
@@ -46,6 +47,7 @@ public class TodoListViewModel extends ViewModel implements TodoListItemTapListe
                 TodoListItemViewModel viewModel = new TodoListItemViewModel(item.getId());
                 viewModel.alertAtTimestampMillis.set(item.getAlertAtMillis());
                 viewModel.isChecked.set(item.isDone());
+                viewModel.name.set(item.getName());
                 data.add(viewModel);
             }
             return data;
@@ -54,20 +56,12 @@ public class TodoListViewModel extends ViewModel implements TodoListItemTapListe
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     public void onPause() {
-        if(items!=null){
-            List<TodoListItemViewModel> listItemViewModels = items.getValue();
-            if (listItemViewModels != null) {
-                for (TodoListItemViewModel model : listItemViewModels) {
-                    updateItemDoneStateUseCase.execute(model.id, model.isChecked.get());
-                }
+        List<TodoListItemViewModel> listItemViewModels = items.getValue();
+        if (listItemViewModels != null) {
+            for (TodoListItemViewModel model : listItemViewModels) {
+                updateItemDoneStateUseCase.execute(model.id, model.isChecked.get());
             }
         }
-//        List<TodoListItemViewModel> listItemViewModels = items.getValue();
-//        if (listItemViewModels != null) {
-//            for (TodoListItemViewModel model : listItemViewModels) {
-//                updateItemDoneStateUseCase.execute(model.id, model.isChecked.get());
-//            }
-//        }
     }
 
     @Override
@@ -84,22 +78,14 @@ public class TodoListViewModel extends ViewModel implements TodoListItemTapListe
     }
 
     public void onClearAllCheckedTapped() {
-        List<TodoListItemViewModel> value;
-        if (items!=null) {
-            value = items.getValue();
+        List<TodoListItemViewModel> value = items.getValue();
+        if (value != null) {
             for (TodoListItemViewModel item : value) {
                 if (item.isChecked.get()) {
                     removeItemUseCase.removeItemById(item.id);
                 }
             }
         }
-//        if (value != null) {
-//            for (TodoListItemViewModel item : value) {
-//                if (item.isChecked.get()) {
-//                    removeItemUseCase.removeItemById(item.id);
-//                }
-//            }
-//        }
     }
 
     public LiveData<List<TodoListItemViewModel>> getItems() {

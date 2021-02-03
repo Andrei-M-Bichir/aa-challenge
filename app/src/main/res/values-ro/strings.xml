@@ -3,4 +3,5 @@
     <string name="app_name">ListaMeaDeTODO</string>
     <string name="title_activity_list_item">ActivitateaListeiMele</string>
     <string name="hello_world">Salut lume rotunda!</string>
+    <string name="add_item">Adauga un obiect</string>
 </resources>
