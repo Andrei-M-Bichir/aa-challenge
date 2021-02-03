@@ -17,11 +17,12 @@ public class ItemViewModelFactory implements ViewModelProvider.Factory {
 
     public ItemViewModelFactory(GetItemByIdUseCase getItemByIdUseCase,
                                 RemoveItemUseCase removeItemUseCase,
-                                UpdateItemUseCase updateItemUseCase, int itemId) {
+                                UpdateItemUseCase updateItemUseCase,
+                                int itemId) {
         this.itemId = itemId;
         this.getItemByIdUseCase = getItemByIdUseCase;
         this.removeItemUseCase = removeItemUseCase;
-        this.updateItemUseCase = this.updateItemUseCase;
+        this.updateItemUseCase = updateItemUseCase;
     }
 
     @NonNull
