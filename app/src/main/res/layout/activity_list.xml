@@ -52,6 +52,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/new_item_editText"
             app:todoListItems="@{viewModel.items}"
+            app:tapListener="@{viewModel}"
             tools:listitem="@layout/list_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

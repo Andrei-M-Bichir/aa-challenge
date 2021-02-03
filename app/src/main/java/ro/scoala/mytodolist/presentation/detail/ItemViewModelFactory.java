@@ -21,7 +21,7 @@ public class ItemViewModelFactory implements ViewModelProvider.Factory {
         this.itemId = itemId;
         this.getItemByIdUseCase = getItemByIdUseCase;
         this.removeItemUseCase = removeItemUseCase;
-        this.updateItemUseCase = this.updateItemUseCase;
+        this.updateItemUseCase = updateItemUseCase;
     }
 
     @NonNull

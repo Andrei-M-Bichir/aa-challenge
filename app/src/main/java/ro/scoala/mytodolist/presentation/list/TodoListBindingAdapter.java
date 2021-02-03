@@ -1,6 +1,7 @@
 package ro.scoala.mytodolist.presentation.list;
 
 import androidx.databinding.BindingAdapter;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,7 +11,7 @@ public class TodoListBindingAdapter {
 
     @BindingAdapter(value = {"todoListItems", "tapListener"})
     public static void setItems(RecyclerView recyclerView,
-                                List<TodoListItemViewModel> items,
+                                LiveData<List<TodoListItemViewModel>> items,
                                 TodoListItemTapListener tapListener) {
         RecyclerView.Adapter<?> adapter = recyclerView.getAdapter();
         if (adapter == null) {
@@ -19,7 +20,7 @@ public class TodoListBindingAdapter {
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         }
         if (items != null) {
-            ((TodoListItemsAdapter) adapter).updateItems(items, tapListener);
+            ((TodoListItemsAdapter) adapter).updateItems(items.getValue(), tapListener);
         }
     }
 
